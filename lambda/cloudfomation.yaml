@@ -1,0 +1,23 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Sample SAM Template for triggering AWS Lambda functions via scheduled CloudWatch events.
+
+Globals:
+  Function:
+    Timeout: 3
+    Runtime: python3.7
+
+Resources:
+  TestFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: bc-lambda/
+      Handler: app.lambda_handler
+      Events:
+        ScheduledEvent:
+          Type: Schedule
+          Properties:
+            Schedule: cron(5 * * * *)
+            Description: Sample Lambda function scheduling with SAM
+            Enabled: True

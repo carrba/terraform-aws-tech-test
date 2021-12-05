@@ -12,3 +12,12 @@ variable "public_key" {
   default = "~/.ssh/id_rsa.pub"
 }
 
+variable "owner" {
+  type = string
+  default = "Brian Carr"
+}
+
+variable "project" {
+  type = string
+  default = "Tech Test"
+}
